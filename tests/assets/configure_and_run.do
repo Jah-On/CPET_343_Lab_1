@@ -2,6 +2,11 @@ onerror {resume}
 quietly WaveActivateNextPane {} 0
 
 # Add wave lines here...  i.e. add wave -noupdate -color #eb34eb /tb/led_output
+add wave -noupdate -color #FF0000 /singleBitAdder_agnostic_bench/a
+add wave -noupdate -color #00FF00 /singleBitAdder_agnostic_bench/b
+add wave -noupdate -color #0000FF /singleBitAdder_agnostic_bench/cin
+add wave -noupdate -color #FF00FF /singleBitAdder_agnostic_bench/sum
+add wave -noupdate -color #FFFF00 /singleBitAdder_agnostic_bench/cout
 
 TreeUpdate [SetDefaultTree]
 WaveRestoreCursors {{Cursor 1} {50 ns} 0}
