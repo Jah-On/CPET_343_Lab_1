@@ -24,6 +24,7 @@ architecture testing of singleBitAdder_agnostic_bench is
     end component;
 
     signal a, b, cin, sum, cout : std_logic                    := '0';
+    -- Using SLV allows using a for loop to iterate through bit combinations.
     signal combi                : std_logic_vector(2 downto 0) := "000";
 
     constant time_tick : time := 20ns;
@@ -38,7 +39,7 @@ begin
 
     run: process
     begin
-        for val in 0 to 7 loop
+        for val in 0 to 7 loop -- equivalent to "000" to "111" in binary.
             combi <= std_logic_vector(to_unsigned(val, 3));
 
             a   <= combi(2);
