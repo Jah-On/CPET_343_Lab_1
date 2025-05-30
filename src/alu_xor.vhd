@@ -1,3 +1,11 @@
+/*
+
+Author: John Schulz
+Created: 29/05/2025
+
+Xor gate for single bit adder.
+
+*/
 library IEEE;
 use IEEE.std_logic_1164.all;
 

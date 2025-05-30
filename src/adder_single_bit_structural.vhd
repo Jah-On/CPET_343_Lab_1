@@ -3,8 +3,8 @@
 Author: John Schulz
 Created: 29/05/2025
 
-Single bit adder as a behavioral implementation. Takes two bits and a carry in
-and outputs a sum and carry out. 
+Single bit adder as a structural implementation. Takes two bits and a carry in
+and outputs a sum and carry out. Thhis is the top level entity.
 
 */
 library IEEE;
@@ -18,9 +18,11 @@ entity singleBitAdder is
 end singleBitAdder;
 
 architecture structuralImpl of singleBitAdder is
+    -- Connections betweem gates that are not entity I/O ports.
     signal sum_xor_res                                             : std_logic;
     signal b_and_c_sig, a_and_b_sig, a_and_c_sig, anded_a_or_sig   : std_logic;
 begin
+    -- Use entities from work library defined in other files.
     sum_xor_b_c : entity work.alu_xor port map (
         xor_x   => b,
         xor_y   => cin,
