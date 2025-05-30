@@ -61,7 +61,7 @@ if ($vhdlFiles.Count -eq 0){
     exit -1
 }
 
-# Analyze VHDL files (now including testbenches)
+# Analyze VHDL files
 Write-Host ""
 Write-Host "Analyzing VHDL files: " -NoNewline -ForegroundColor Cyan
 Write-Host $vhdlFiles -NoNewline -ForegroundColor Green
@@ -78,7 +78,7 @@ foreach ($file in $vhdlFiles) {
         Write-Host ""
         Write-Host "Press Enter to close or close the terminal..." -NoNewline
         Read-Host
-        exit -1
+        exit $LASTEXITCODE
     } else {
         Write-Host "Analysis for '" -NoNewline -ForegroundColor Cyan
         Write-Host $file -NoNewline -ForegroundColor Green
@@ -107,7 +107,7 @@ if ($LASTEXITCODE -ne 0) {
     Write-Host "Elaboration failed!" -ForegroundColor Red
 
     BlockExit
-    exit -1
+    exit $LASTEXITCODE
 } else {
     Write-Host "Elaborated successfully!" -ForegroundColor Cyan
 }
@@ -122,8 +122,8 @@ nvc --std=2008 -r $testBench -w --format=vcd
 
 if ($LASTEXITCODE -ne 0) {
     Write-Host "Stimulation failed!" -ForegroundColor Red
-
     
+    BlockExit
     exit $LASTEXITCODE
 } else {
     Write-Host "Stimulated successfully!" -ForegroundColor Cyan
