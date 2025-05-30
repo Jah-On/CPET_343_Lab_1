@@ -69,7 +69,7 @@ if ($vhdlFiles.Count -eq 0){
     exit -1
 }
 
-# Analyze VHDL files (now including testbenches)
+# Analyze VHDL files
 Write-Host ""
 Write-Host "Analyzing VHDL files: " -NoNewline -ForegroundColor Cyan
 Write-Host $vhdlFiles -NoNewline -ForegroundColor Green
@@ -108,7 +108,7 @@ Write-Host "Elaborating testbench '" -NoNewline -ForegroundColor Cyan
 Write-Host $testBench -NoNewline -ForegroundColor Magenta
 Write-Host "' and executing .do file..." -ForegroundColor Cyan
 
-# Elaborate the test bench
+# Elaborate the test bench and include do file argument
 vsim -voptargs=+acc $testBench -do .\tests\assets\configure_and_run.do 
 Start-Sleep -Seconds 5 
 
