@@ -49,7 +49,7 @@ if (-not (Test-Path -Path "$currentLocation\$targetDirectory" -PathType Containe
 }
 
 # Get all VHDL files and join them with spaces
-$vhdlFiles = (Get-ChildItem -Path .\$targetDirectory\*.vhd -Recurse | Resolve-Path -Relative )
+$vhdlFiles = (Get-ChildItem -Path .\$targetDirectory\*.vhd -Recurse | Resolve-Path -Relative | Sort-Object -Property Length )
 
 # Get the test bench file name without the .vhd extension
 $testBench = (Get-ChildItem -Path .\$targetDirectory\testbenches\*_tb.vhd | Select-Object -First 1 -ExpandProperty BaseName )
